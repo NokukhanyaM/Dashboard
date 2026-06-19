@@ -1,0 +1,53 @@
+:root {
+    --primary-blue: #004a99;
+    --bg-dark: #0f172a;
+    --sidebar-dark: #1e293b;
+    --text-white: #f8fafc;
+    --accent-blue: #38bdf8;
+    --card-dark: #1e293b;
+}
+
+body {
+    background-color: var(--bg-dark) !important;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-white);
+    margin: 0;
+    display: flex;
+}
+
+/* Sidebar and Layout */
+.sidebar {
+    position: fixed;
+    top: 0; left: 0; width: 260px; height: 100vh;
+    background: var(--sidebar-dark);
+    padding: 2rem 1.2rem;
+    z-index: 100;
+}
+.main-content { margin-left: 260px; width: 100%; padding: 60px 40px; }
+
+/* Toast Slide Animation */
+.custom-slide-toast {
+    transform: translateX(110%);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease;
+    opacity: 0;
+}
+.custom-slide-toast.show { transform: translateX(0%); opacity: 1; }
+
+/* Progress Bar Animations */
+@keyframes shrink { from { width: 100%; } to { width: 0%; } }
+
+/* Success Timer: 5 seconds */
+.toast.show .progress-success {
+    animation: shrink 5s linear forwards;
+    background-color: #0dcaf0 !important;
+}
+
+/* Error Timer: 10 seconds */
+.toast.show .progress-error {
+    animation: shrink 10s linear forwards;
+    background-color: #ffc107 !important;
+}
+
+.action-card { background: var(--card-dark); border-radius: 20px; padding: 35px; border: 1px solid rgba(255,255,255,0.1); }
+.balance-hero { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 24px; padding: 50px; }
+.balance-amount { font-size: 3.5rem; font-weight: 700; color: var(--accent-blue); }
