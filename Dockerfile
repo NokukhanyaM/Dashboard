@@ -24,7 +24,7 @@ WORKDIR /usr/local/tomcat
 RUN rm -rf webapps/*
 
 # Copy WAR file into Tomcat
-COPY --from=build /app/target/*.war webapps/ROOT.war
+COPY --from=build /usr/local/tomcat/target/Dashboard-1.0-SNAPSHOT.war
 
 # Expose Tomcat port
 EXPOSE 8083
