@@ -27,7 +27,7 @@ RUN rm -rf webapps/*
 COPY --from=build /app/target/Dashboard-1.0-SNAPSHOT.war ./webapps/ROOT.war
 
 # Expose Tomcat port
-EXPOSE 8083
+EXPOSE 8080
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
