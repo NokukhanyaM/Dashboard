@@ -53,50 +53,48 @@
             });
         }
     </script>
-    <!-- Top Navbar for Mobile/General -->
-    <nav class="navbar navbar-light px-4">
 
-        <button type="button"
-                class="toggle-btn"
-                onclick="toggleSidebar()">
-            ☰
-        </button>
+    <!-- Top Navbar -->
+    <div class="top-toggle-container">
+        <button type="button" class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    </div>
 
-        <span class="navbar-brand fw-bold text-primary">
-        MYBANK
-    </span>
-
-        <span class="text-muted">
-        Online Banking
-    </span>
-
-    </nav>
-
-    <!-- Sidebar -->
+    <!-- Sidebar Container -->
     <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">MYBANK</div>
+        <!-- Header with Menu Icon and Brand Name Side-by-Side -->
+        <div class="sidebar-header" onclick="toggleSidebar()">
+            <span class="toggle-icon">☰</span>
+            <span class="logo-name">MYBANK</span>
+        </div>
 
-        <h:form>
-            <h:commandLink action="#{dashboardBean.setView('home')}" styleClass="menu-link">
-                🏠 Home
-            </h:commandLink>
+        <h:form id="sidebarForm">
+            <div class="d-flex flex-column">
+                <h:commandLink action="#{dashboardBean.setView('home')}"
+                               styleClass="menu-link #{dashboardBean.currentView == 'home' ? 'active' : ''}">
+                    <span class="menu-icon">🏠</span>
+                    <span class="menu-text">Dashboard</span>
+                </h:commandLink>
 
-            <h:commandLink action="#{dashboardBean.setView('deposit')}" styleClass="menu-link">
-                💰 Deposit
-            </h:commandLink>
+                <h:commandLink action="#{dashboardBean.setView('deposit')}"
+                               styleClass="menu-link #{dashboardBean.currentView == 'deposit' ? 'active' : ''}">
+                    <span class="menu-icon">💰</span>
+                    <span class="menu-text">Deposit</span>
+                </h:commandLink>
 
-            <h:commandLink action="#{dashboardBean.setView('withdraw')}" styleClass="menu-link">
-                💸 Withdraw
-            </h:commandLink>
+                <h:commandLink action="#{dashboardBean.setView('withdraw')}"
+                               styleClass="menu-link #{dashboardBean.currentView == 'withdraw' ? 'active' : ''}">
+                    <span class="menu-icon">💸</span>
+                    <span class="menu-text">Withdraw</span>
+                </h:commandLink>
+            </div>
 
-            <div class="mt-5">
+            <div class="logout-container">
                 <h:commandButton value="Secure Logout"
                                  action="#{dashboardBean.logout}"
                                  styleClass="btn btn-outline-danger w-100">
                     <f:ajax execute="@form" render="toastMessages"/>
                 </h:commandButton>
             </div>
-
         </h:form>
     </div>
 
