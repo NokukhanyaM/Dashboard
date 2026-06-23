@@ -70,6 +70,16 @@
                 </h:dataTable>
             </h:form>
         </div>
+
+        <!-- Logout Button Form Wrapper -->
+        <h:form id="logoutForm">
+            <h:commandButton value="Secure Logout"
+                             action="#{dashboardBean.logout}"
+                             styleClass="btn btn-outline-danger px-4 py-2 fw-semibold shadow-sm rounded-3">
+                <f:ajax execute="@form" render="toastMessages"/>
+            </h:commandButton>
+        </h:form>
+
     </div>
 
     <script>

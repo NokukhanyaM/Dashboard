@@ -132,7 +132,7 @@ public class DashboardBean implements Serializable {
 
         try {
             // Redirect to the login page on the auth service with a flag
-            context.getExternalContext().redirect("http://localhost:8081/login?logout=true");
+            context.getExternalContext().redirect("https://authserviceapp.onrender.com/login?logout=true");
         } catch (IOException e) {
             e.printStackTrace();
         }
