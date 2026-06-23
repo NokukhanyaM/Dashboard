@@ -11,6 +11,7 @@ import javax.faces.context.Flash; // Required for message survival
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,5 +84,17 @@ public class AdminBean implements Serializable {
     private void addToastMessage(String message, boolean error) {
         FacesMessage.Severity severity = error ? FacesMessage.SEVERITY_ERROR : FacesMessage.SEVERITY_INFO;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, message, null));
+    }
+
+    public void logout() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().invalidateSession();
+
+        try {
+            // Redirect to the login page on the auth service with a flag
+            context.getExternalContext().redirect("https://authserviceapp.onrender.com/login?logout=true");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

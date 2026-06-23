@@ -54,12 +54,22 @@
         }
     </script>
     <!-- Top Navbar for Mobile/General -->
-    <nav class="navbar navbar-light bg-white border-bottom px-4">
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-        <span class="navbar-brand mb-0 h1" style="color:#004a99">MYBANK</span>
-        <div class="user-avatar">
-            <small class="text-muted mr-2">Online Banking</small>
-        </div>
+    <nav class="navbar navbar-light px-4">
+
+        <button type="button"
+                class="toggle-btn"
+                onclick="toggleSidebar()">
+            ☰
+        </button>
+
+        <span class="navbar-brand fw-bold text-primary">
+        MYBANK
+    </span>
+
+        <span class="text-muted">
+        Online Banking
+    </span>
+
     </nav>
 
     <!-- Sidebar -->
@@ -68,15 +78,15 @@
 
         <h:form>
             <h:commandLink action="#{dashboardBean.setView('home')}" styleClass="menu-link">
-                <span>🏠 Home</span>
+                🏠 Home
             </h:commandLink>
 
             <h:commandLink action="#{dashboardBean.setView('deposit')}" styleClass="menu-link">
-                <span>💰 Deposit</span>
+                💰 Deposit
             </h:commandLink>
 
             <h:commandLink action="#{dashboardBean.setView('withdraw')}" styleClass="menu-link">
-                <span>💸 Withdraw</span>
+                💸 Withdraw
             </h:commandLink>
 
             <div class="mt-5">
